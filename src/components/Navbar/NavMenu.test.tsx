@@ -1,6 +1,5 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { createMemoryHistory } from "history";
 import "@testing-library/jest-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import NavMenu from "./NavMenu";
