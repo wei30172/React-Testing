@@ -1,5 +1,5 @@
 import React from "react";
-import "./NavMenu.scss";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   menuItems: {
@@ -9,18 +9,21 @@ type Props = {
 };
 
 const NavMenu = ({ menuItems }: Props) => {
+  const navigate = useNavigate();
   return (
     <li className="nav-menu flex">
-      {menuItems.map((item) => (
-        <a
-          key={item.href}
-          role="navigation"
-          className="navbar_menu_item cursor-pointer"
-          href={item.href}
-        >
-          {item.name}
-        </a>
-      ))}
+      <ul>
+        {menuItems.map((item) => (
+          <li
+            key={item.href}
+            role="navigation"
+            className="navbar_menu_item cursor-pointer"
+            onClick={() => navigate(`${item.href}`)}
+          >
+            {item.name}
+          </li>
+        ))}
+      </ul>
     </li>
   );
 };
