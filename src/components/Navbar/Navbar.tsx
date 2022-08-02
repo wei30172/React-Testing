@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { PropsFromRedux, authConnector } from "../../store/auth/connector";
 import CloseIcon from "@material-ui/icons/Close";
 import MenuIcon from "@material-ui/icons/Menu";
-import { SwitchMode } from "../index";
+import { SwitchMode, NavMenu } from "../index";
+import { User } from "../../features";
 import logo from "../../assets/logo.svg";
 import "./Navbar.scss";
 
-const Navbar = ({ token, logoutRequest }: PropsFromRedux) => {
+const Navbar = ({ user, token, logoutRequest }: PropsFromRedux) => {
   const navigate = useNavigate();
   const [showMobMenu, setShowMobMenu] = useState(false);
 
@@ -15,6 +16,17 @@ const Navbar = ({ token, logoutRequest }: PropsFromRedux) => {
     localStorage.removeItem("auth");
     logoutRequest();
   };
+
+  const menuItems = [
+    {
+      name: "Home",
+      href: "/home",
+    },
+    {
+      name: "About",
+      href: "/about",
+    },
+  ];
 
   return (
     <div className="navbar">
@@ -25,9 +37,8 @@ const Navbar = ({ token, logoutRequest }: PropsFromRedux) => {
       <div className="navbar_menu flex">
         {/* mobile or pc menu */}
         <ul className={showMobMenu ? "navbar_menu_mobile" : "navbar_menu_pc"}>
-          <li className="cursor-pointer" onClick={() => navigate("/")}>
-            Home
-          </li>
+          <li className="flex">Welcome{user && <User email={user} />}</li>
+          <NavMenu menuItems={menuItems} />
           {token ? (
             <li className="cursor-pointer" onClick={() => handleLogout()}>
               Logout

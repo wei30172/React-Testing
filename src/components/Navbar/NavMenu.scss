@@ -1,0 +1,8 @@
+@use "../../styles/mixin/colors" as colors;
+
+.nav-menu {
+  .navbar_menu_item {
+    color: colors.$white;
+    padding: 0 .5rem;
+  }
+}
