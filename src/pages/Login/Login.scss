@@ -23,9 +23,9 @@
     .form-input {
       width: 100%;
       margin-bottom: .2rem;
-      span {
+      p {
         width: 300px;
-        display: none;
+        visibility: hidden;
         font-size: 0.875rem;
         line-height: 1.25rem;
         color: colors.$primary;
@@ -39,8 +39,8 @@
         width: 300px;
         padding: 0.5rem;
         background-color: colors.$white;
-        &:invalid.focused ~ span{
-          display: block;
+        &:invalid.focused ~ p{
+          visibility: visible;
         }
       }
     }    

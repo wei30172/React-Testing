@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { InputWrapper } from "../../components";
+import axios from "axios";
+import { InputWrapper, ButtonWrapper } from "../../components";
 import ErrorIcon from "@material-ui/icons/Error";
+import { toast } from "react-hot-toast";
 import "./Login.scss";
 
 export interface LoginValues {
@@ -11,6 +13,7 @@ export interface LoginValues {
 
 const Login = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [userInputs, setUserInputs] = useState<LoginValues>({
     email: "",
     password: "",
@@ -22,7 +25,7 @@ const Login = () => {
       label: "Email",
       errorMessage: "Email should be a valid email address!",
       name: "email",
-      type: "email",
+      type: "text",
       placeholder: "Email",
       pattern: "^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$",
       required: true,
@@ -42,8 +45,19 @@ const Login = () => {
     },
   ];
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
+    try {
+      const { data } = await axios.get(
+        "https://jsonplaceholder.typicode.com/users/1",
+      );
+      toast.success(`Welcome, ${data.name}!`);
+    } catch (err) {
+      toast.error("Login Failure.");
+    }
+    setLoading(false);
+    navigate("/");
   };
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -53,47 +67,37 @@ const Login = () => {
 
   return (
     <div className="login">
-    <div className="login_form">
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        {formInputs.map(
-          ({ id, name, label, errorMessage, ...inputProps }) => (
-            <div key={id} className="form-input">
-              <label>{label}</label>
-              <br />
-              <InputWrapper
-                {...inputProps}
-                name={name}
-                value={userInputs[name as keyof LoginValues]}
-                handleChange={handleChange}
-              />
-              <span>
-                <ErrorIcon />
-                {errorMessage}
-              </span>
-            </div>
-          ),
-        )}
-        <button
-          disabled={!userInputs.email || !userInputs.password}
-          className="btn"
-          type="submit"
-        >
-          LOGIN
-        </button>
-      </form>
-      <div className="login_form_link flex">
-        <p>Do not have an account?</p>
-        <button
-          className="cursor-pointer"
-          onClick={() => navigate("/signup")}
-        >
-          Signup
-        </button>
+      <div className="login_form">
+        <h2>Login</h2>
+        <form onSubmit={handleLogin}>
+          {formInputs.map(
+            ({ id, name, label, errorMessage, ...inputProps }) => (
+              <div key={id} className="form-input">
+                <label>{label}</label>
+                <br />
+                <InputWrapper
+                  {...inputProps}
+                  name={name}
+                  value={userInputs[name as keyof LoginValues]}
+                  handleChange={handleChange}
+                />
+                <p data-testid={`error-${name}`}>
+                  <ErrorIcon />
+                  {errorMessage}
+                </p>
+              </div>
+            ),
+          )}
+          <ButtonWrapper
+            disabled={!userInputs.email || !userInputs.password}
+            className="btn"
+            type="submit"
+            title={loading ? "please wait" : "Login"}
+          />
+        </form>
       </div>
     </div>
-  </div>
-  )
+  );
 };
 
 export default Login;
