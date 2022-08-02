@@ -1,9 +1,7 @@
-import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
-import "@testing-library/jest-dom";
+import { renderHook, waitFor } from "@testing-library/react";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
-import { APIComponent } from "../../components";
+import { useAPI } from "./useAPI";
 
 const server = setupServer(
   rest.get("/api", (req, res, ctx) => {
@@ -20,10 +18,12 @@ afterEach(() => server.resetHandlers());
 // Disable API mocking after the tests are done.
 afterAll(() => server.close());
 
-test("gets the data component", async () => {
-  render(<APIComponent />);
+test("gets the data from hooks", async () => {
+  const { result } = renderHook(() => useAPI());
 
-  const output = await waitFor(() => screen.findByRole("contentinfo"));
-
-  expect(output).toHaveTextContent("Name is Claire.");
+  await waitFor(() => {
+    expect(result.current).toEqual({ name: "Claire" });
+  });
 });
+
+// toBe uses Object.is to test exact equality. If you want to check the value of an object, use toEqual instead.

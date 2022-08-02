@@ -1,14 +1,14 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { Counter } from "../../components";
+import ButtonWrapper from "./ButtonWrapper";
 
 test("handles onClick", () => {
-  render(<Counter />);
+  const onClick = jest.fn();
 
-  const divElement = screen.getByRole("contentinfo");
+  render(<ButtonWrapper onClick={onClick} title="Add" />);
   const buttonElement = screen.getByText("Add");
   fireEvent.click(buttonElement);
 
-  expect(divElement).toHaveTextContent("Count is 1");
+  expect(onClick).toHaveBeenCalledTimes(1);
 });

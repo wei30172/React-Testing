@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { User } from "../../features";
+import User from "./User";
 
 test("renders a user", () => {
   render(<User email="test@testnet.co.us" />);

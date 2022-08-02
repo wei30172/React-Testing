@@ -1,5 +1,5 @@
 import { renderHook, act } from "@testing-library/react";
-import { useCounter } from "../../hooks/useCounter";
+import { useCounter } from "./useCounter";
 
 test("should increment", () => {
   const { result } = renderHook(() => useCounter());
