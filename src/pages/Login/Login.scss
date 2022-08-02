@@ -20,6 +20,30 @@
     background-color: colors.$background-dark;
     padding: 3rem 1.2rem 1rem;
     z-index: 2;
+    .form-input {
+      width: 100%;
+      margin-bottom: .2rem;
+      span {
+        width: 300px;
+        display: none;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        color: colors.$primary;
+        .MuiSvgIcon-root {
+          width: .8rem;
+          height: .8rem;
+          color: colors.$danger-primary;
+        }
+      }
+      input {
+        width: 300px;
+        padding: 0.5rem;
+        background-color: colors.$white;
+        &:invalid.focused ~ span{
+          display: block;
+        }
+      }
+    }    
     .btn {
       width: 50%;
       margin: .3rem auto;
@@ -42,6 +66,9 @@
 @include screens.tablet {
   .login, .signup {
     .login_form, .signup_form {
+      .form-input {
+        margin-bottom: 1.5rem;
+      }
       .btn {
         margin: 2rem auto;
       }

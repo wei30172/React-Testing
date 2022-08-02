@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { PropsFromRedux, authConnector } from "../../store/auth/connector";
 import CloseIcon from "@material-ui/icons/Close";
 import MenuIcon from "@material-ui/icons/Menu";
 import { SwitchMode, NavMenu } from "../index";
@@ -8,13 +7,12 @@ import { User } from "../../features";
 import logo from "../../assets/logo.svg";
 import "./Navbar.scss";
 
-const Navbar = ({ user, token, logoutRequest }: PropsFromRedux) => {
+const Navbar = () => {
   const navigate = useNavigate();
   const [showMobMenu, setShowMobMenu] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem("auth");
-    logoutRequest();
   };
 
   const menuItems = [
@@ -37,17 +35,11 @@ const Navbar = ({ user, token, logoutRequest }: PropsFromRedux) => {
       <div className="navbar_menu flex">
         {/* mobile or pc menu */}
         <ul className={showMobMenu ? "navbar_menu_mobile" : "navbar_menu_pc"}>
-          <li className="flex">Welcome{user && <User email={user} />}</li>
+          <li className="flex">Welcome{<User email="test@testnet.co.us" />}</li>
           <NavMenu menuItems={menuItems} />
-          {token ? (
-            <li className="cursor-pointer" onClick={() => handleLogout()}>
-              Logout
-            </li>
-          ) : (
-            <li className="cursor-pointer" onClick={() => navigate("/login")}>
-              Login
-            </li>
-          )}
+          <li className="cursor-pointer" onClick={() => navigate("/login")}>
+            Login
+          </li>
         </ul>
 
         {/* hamburger */}
@@ -69,4 +61,4 @@ const Navbar = ({ user, token, logoutRequest }: PropsFromRedux) => {
   );
 };
 
-export default authConnector(Navbar);
+export default Navbar;
