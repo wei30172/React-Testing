@@ -11,10 +11,6 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [showMobMenu, setShowMobMenu] = useState(false);
 
-  const handleLogout = () => {
-    localStorage.removeItem("auth");
-  };
-
   const menuItems = [
     {
       name: "Home",
