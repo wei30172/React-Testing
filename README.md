@@ -1,6 +1,6 @@
 ## React Testing Example
 
-A simple website showing examples of React React Testing
+A simple website showing examples of React Testing
 
 ## Project Screenshots
 
