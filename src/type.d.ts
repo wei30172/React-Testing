@@ -15,3 +15,8 @@ interface IAuth {
   result: IUser;
   token: string;
 }
+
+// Counter
+interface CounterState {
+  value: number;
+}

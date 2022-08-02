@@ -30,5 +30,6 @@ export default store;
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = {
   auth: AuthState;
+  counter: CounterState;
 };
 export type AppDispatch = typeof store.dispatch;
