@@ -10,8 +10,12 @@ test("email and passwordinput should be rendered and emtpy", () => {
       <Login />
     </Router>,
   );
-  const emailInputEl = screen.getByPlaceholderText(/Email/i) as HTMLInputElement;
-  const passwordInputEl = screen.getByPlaceholderText(/Password/i) as HTMLInputElement;
+  const emailInputEl = screen.getByPlaceholderText(
+    /Email/i,
+  ) as HTMLInputElement;
+  const passwordInputEl = screen.getByPlaceholderText(
+    /Password/i,
+  ) as HTMLInputElement;
   expect(emailInputEl).toBeInTheDocument();
   expect(emailInputEl.value).toBe("");
   expect(passwordInputEl).toBeInTheDocument();
