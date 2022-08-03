@@ -1,0 +1,29 @@
+@use "../../styles/mixin/colors" as colors;
+
+.todo {
+  display: flex;
+  justify-content: space-between;
+  input[type="checkbox"] {
+    min-width: 30px;
+    min-height: 30px;
+    margin-right: 1rem;
+  }
+  label {
+    width: 100%;
+    text-align: left;
+  }
+  button {
+    min-width: 50px;
+    min-height: 50px;
+    border: 1px solid colors.$text-primary;
+    border-radius: 10%;
+    margin: .1rem;
+    &.delete {
+      background-color: colors.$white;
+      color: colors.$danger-primary;
+      &:focus, &:hover {
+        background-color: colors.$danger-background;
+      }
+    }
+  }
+}

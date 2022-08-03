@@ -1,0 +1,25 @@
+@use "../../styles/mixin/colors" as colors;
+
+form {
+  padding: 1rem;
+  border: 1px solid colors.$text-primary;
+  margin-bottom: 1rem;
+  .new-todo {
+    width: 100%;
+    padding-right: 1rem;
+  }
+  input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: 0.5px solid colors.$text-primary;
+  }
+  .submit {
+    background-color: colors.$white;
+    color: colors.$background-light;
+    &:focus, &:hover {
+      background-color: colors.$success-primary;
+      color: colors.$white;
+    }
+  }
+}

@@ -3,7 +3,7 @@ import "./Home.scss";
 
 const Home = () => {
   return (
-    <main className="home page-flex">
+    <main className="home-page page-flex">
       <h1>React Testing</h1>
     </main>
   );
