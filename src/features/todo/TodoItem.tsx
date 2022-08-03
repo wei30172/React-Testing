@@ -1,5 +1,6 @@
 import React from "react";
-import { TodoType } from "../../types/components.type";
+import { ButtonWrapper } from "../../components";
+import { TodoType } from "../../types/todos.type";
 import "./TodoItem.scss";
 
 type Props = {
@@ -11,7 +12,7 @@ type Props = {
 const TodoItem: React.FC<Props> = ({ todo, updateTodo, deleteTodo }) => {
   return (
     <article>
-      <div className="todo">
+      <div data-cy={`todo-${todo.title}`} className="todo">
         <input
           type="checkbox"
           id={`${todo.id}`}
@@ -19,12 +20,11 @@ const TodoItem: React.FC<Props> = ({ todo, updateTodo, deleteTodo }) => {
           onChange={() => updateTodo({ ...todo, completed: !todo.completed })}
         />
         <label htmlFor={`${todo.id}`}>{todo.title}</label>
-        <button
+        <ButtonWrapper
+          title={`❌`}
           className="delete cursor-pointer"
           onClick={() => deleteTodo(todo.id)}
-        >
-          ❌
-        </button>
+        />
       </div>
     </article>
   );

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TodoItem from "./TodoItem";
 import { todosApi } from "../../api/todosApi";
-import { TodoType } from "../../types/components.type";
+import { TodoType } from "../../types/todos.type";
 import "./TodoList.scss";
 
 const TodoList = () => {
@@ -49,7 +49,7 @@ const TodoList = () => {
     e.preventDefault();
     addTodo({
       userId: 1,
-      id: Math.floor(Math.random() * 1000),
+      id: Math.floor(Math.random() * (1000 - 201) + 201),
       title: newTodo,
       completed: false,
     });
@@ -74,10 +74,8 @@ const TodoList = () => {
   return (
     <main>
       <h1>Todo List</h1>
-      <p>
-        Total Todos: {todos.length}, Completed Todos:{" "}
-        {todos.filter((todo) => todo.completed).length}
-      </p>
+      <p>Total Todos: {todos.length}</p>
+      <p>Completed Todos: {todos.filter((todo) => todo.completed).length}</p>
       {newItemSection}
       {todos.length > 0 &&
         todos.map((todo) => (
