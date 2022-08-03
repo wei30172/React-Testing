@@ -37,6 +37,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "cypress": "cypress open",
     "prettier": "prettier --config .prettierrc \"src/**/*.{js,jsx,ts,tsx}\" --write"
   },
   "eslintConfig": {
@@ -58,8 +59,10 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/cypress": "^8.0.3",
     "@types/redux-logger": "^3.0.9",
     "@types/uuid": "^8.3.4",
+    "cypress": "^10.4.0",
     "redux-logger": "^3.0.6"
   }
 }

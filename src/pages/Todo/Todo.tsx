@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { TodoList } from "../../features";
+import { ButtonWrapper } from "../../components";
 import "./Todo.scss";
 
 const Todo = () => {
+  const navigate = useNavigate();
+  const [authenticated] = useState(true);
   return (
     <main className="todo-page">
-      <TodoList />
+      {!authenticated ? (
+        <>
+          <h1>Please login to continue</h1>
+          <ButtonWrapper
+            className="btn"
+            title="go to login page"
+            onClick={() => navigate("/login")}
+          />
+        </>
+      ) : (
+        <TodoList />
+      )}
     </main>
   );
 };
