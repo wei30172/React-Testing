@@ -3,8 +3,8 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Provider } from "react-redux";
 
-import { ReduxCounter } from "../../components";
-import store from "..";
+import ReduxCounter from "./ReduxCounter";
+import store from "../../store";
 
 test("increment", () => {
   render(
