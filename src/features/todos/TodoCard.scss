@@ -1,0 +1,21 @@
+@use "../../styles/mixin/colors" as colors;
+
+.todoCard {
+  background-color: colors.$white;
+  border-radius: 0.25rem;
+  box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.071);
+  display: flex;
+  margin-bottom: 0.75rem;
+  .todoCard_completion {
+    width: 15%;
+    border-right: 0.1rem solid rgba(0, 0, 0, 0.062);
+    padding: 1rem;
+    justify-content: center;
+    display: flex;
+  }
+  .todoCard_todo {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+  }
+}

@@ -27,7 +27,7 @@ const Navbar = () => {
     {
       name: "Accomplishment",
       href: "/accomplishment",
-    }
+    },
   ];
 
   return (
