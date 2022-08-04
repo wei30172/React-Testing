@@ -27,11 +27,7 @@ const Navbar = () => {
     {
       name: "Accomplishment",
       href: "/accomplishment",
-    },
-    {
-      name: "Elements",
-      href: "/elements",
-    },
+    }
   ];
 
   return (
