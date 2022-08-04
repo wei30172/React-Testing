@@ -1,8 +1,8 @@
 import "@testing-library/cypress/add-commands";
 
-Cypress.Commands.add("login", () => {
+Cypress.Commands.add("login", (url: string) => {
   // authenticate
 
   // go to todo page
-  cy.visit("http://localhost:3000/todo");
+  cy.visit(url);
 });

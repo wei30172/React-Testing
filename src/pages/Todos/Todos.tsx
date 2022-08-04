@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TodoList } from "../../features";
 import { ButtonWrapper } from "../../components";
-import "./Todo.scss";
+import "./Todos.scss";
 
 const Todo = () => {
   const navigate = useNavigate();

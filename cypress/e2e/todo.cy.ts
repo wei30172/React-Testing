@@ -1,12 +1,12 @@
-// <reference types="../support"/>
-
 describe("todos", () => {
-  // add todo
-  // delete a todo
-  // check todo
-  // todo count values
+  /*
+    add todo
+    delete a todo
+    check todo
+    todo count values
+  */
   beforeEach(() => {
-    cy.login();
+    cy.login("/todos");
   })
 
   it("user can add, check and delete todos", () => {
@@ -14,7 +14,7 @@ describe("todos", () => {
       .type("todo1")
       .type("{enter}");
     
-    cy.wait(1000);
+    cy.wait(2000);
 
     cy.findByRole("textbox")
       .type("todo2")

@@ -25,7 +25,7 @@ const TodoList = () => {
     const { completed } = updatedTodo;
     setTodos((prevTodos) => {
       let updatedTodos = [...prevTodos].map((todo) => {
-        if (todo.id === updatedTodo.id) {
+        if (todo._id === updatedTodo._id) {
           return { ...todo, completed };
         }
         return todo;
@@ -36,7 +36,7 @@ const TodoList = () => {
 
   const deleteTodo = async (id: number) => {
     setTodos((prevTodos) => {
-      let updatedTodos = [...prevTodos].filter((todo) => todo.id !== id);
+      let updatedTodos = [...prevTodos].filter((todo) => todo._id !== id);
       return updatedTodos;
     });
   };
@@ -49,7 +49,7 @@ const TodoList = () => {
     e.preventDefault();
     addTodo({
       userId: 1,
-      id: Math.floor(Math.random() * (1000 - 201) + 201),
+      _id: Math.floor(Math.random() * (1000 - 201) + 201),
       title: newTodo,
       completed: false,
     });
@@ -72,15 +72,15 @@ const TodoList = () => {
     </form>
   );
   return (
-    <main>
-      <h1>Todo List</h1>
+    <main className="todos-list">
+      <h1>Todos List</h1>
       <p>Total Todos: {todos.length}</p>
       <p>Completed Todos: {todos.filter((todo) => todo.completed).length}</p>
       {newItemSection}
       {todos.length > 0 &&
         todos.map((todo) => (
           <TodoItem
-            key={todo.id}
+            key={todo._id}
             updateTodo={updateTodo}
             deleteTodo={deleteTodo}
             todo={todo}

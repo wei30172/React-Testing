@@ -17,8 +17,20 @@ const Navbar = () => {
       href: "/home",
     },
     {
-      name: "Todo",
-      href: "/todo",
+      name: "Todos",
+      href: "/todos",
+    },
+    {
+      name: "Todos2",
+      href: "/todos2",
+    },
+    {
+      name: "Accomplishment",
+      href: "/accomplishment",
+    },
+    {
+      name: "Elements",
+      href: "/elements",
     },
   ];
 

@@ -4,8 +4,8 @@ declare namespace Cypress {
   interface Chainable {
     /**
      * Custom command to select DOM element by data-cy attribute.
-     * @example cy.login()
+     * @example cy.login("http://localhost:3000/todos")
      */
-     login(): Chainable<Element>;
+     login(url: string): Chainable<Element>;
   }
 }

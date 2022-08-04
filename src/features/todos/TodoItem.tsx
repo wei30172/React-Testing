@@ -15,15 +15,15 @@ const TodoItem: React.FC<Props> = ({ todo, updateTodo, deleteTodo }) => {
       <div data-cy={`todo-${todo.title}`} className="todo">
         <input
           type="checkbox"
-          id={`${todo.id}`}
+          id={`${todo._id}`}
           checked={todo.completed}
           onChange={() => updateTodo({ ...todo, completed: !todo.completed })}
         />
-        <label htmlFor={`${todo.id}`}>{todo.title}</label>
+        <label htmlFor={`${todo._id}`}>{todo.title}</label>
         <ButtonWrapper
           title={`❌`}
           className="delete cursor-pointer"
-          onClick={() => deleteTodo(todo.id)}
+          onClick={() => deleteTodo(todo._id)}
         />
       </div>
     </article>
@@ -32,7 +32,7 @@ const TodoItem: React.FC<Props> = ({ todo, updateTodo, deleteTodo }) => {
 
 const areEqual = (prevProps: Props, nextProps: Props) => {
   return (
-    prevProps.todo.id === nextProps.todo.id &&
+    prevProps.todo._id === nextProps.todo._id &&
     prevProps.todo.completed === nextProps.todo.completed
   );
 };
