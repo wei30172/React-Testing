@@ -1,0 +1,28 @@
+.posts {
+  width: 80%;
+  margin: 0 auto;
+  padding: 5rem 0;
+  .posts_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h2 {
+      font-weight: 500;
+      letter-spacing: 0.1rem;
+      margin-bottom: 1rem;
+    }
+  }
+  .posts_card {
+    .posts_card_select {
+      width: 100%;
+      padding: 0.75rem;
+    }
+    .posts_card_list {
+      margin-top: 0.5rem;
+      margin-left: 1rem;
+    } 
+  }
+}
+
+
+
