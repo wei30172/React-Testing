@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TodoCard, TodoModal } from "../../features";
-import { TodoType } from "../../types/todos.type";
+import { TodoType } from "../../types";
 import "./Todos.scss";
 
 function Todos() {

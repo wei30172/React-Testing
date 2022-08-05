@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { InputWrapper, ButtonWrapper } from "../../components";
-import { TodoType } from "../../types/todos.type";
+import { TodoType } from "../../types";
 import { Modal } from "@material-ui/core";
 import ErrorIcon from "@material-ui/icons/Error";
 import "./TodoModal.scss";

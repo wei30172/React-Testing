@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TodoItem from "./TodoItem";
 import { todosApi } from "../../api/todosApi";
-import { TodoType } from "../../types/todos.type";
+import { TodoType } from "../../types";
 import "./TodoList.scss";
 
 const TodoList = () => {

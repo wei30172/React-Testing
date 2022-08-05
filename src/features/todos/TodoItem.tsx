@@ -1,6 +1,6 @@
 import React from "react";
 import { ButtonWrapper } from "../../components";
-import { TodoType } from "../../types/todos.type";
+import { TodoType } from "../../types";
 import "./TodoItem.scss";
 
 type Props = {

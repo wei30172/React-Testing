@@ -1,5 +1,5 @@
 import React from "react";
-import { TodoType } from "../../types/todos.type";
+import { TodoType } from "../../types";
 import "./TodoCard.scss";
 import DoneOutlineOutlinedIcon from "@material-ui/icons/DoneOutlineOutlined";
 import CloseOutlinedIcon from "@material-ui/icons/CloseOutlined";
