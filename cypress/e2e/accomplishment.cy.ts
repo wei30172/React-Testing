@@ -26,5 +26,14 @@ describe("accomplishment", () => {
     cy.get('[data-cy="accomplishment-title-input"]').should("be.empty");
     cy.get('[data-cy="accomplishment-input"]').should("be.empty");
     cy.get('[data-cy="accomplishment-checkbox"]').should("not.be.checked");
+
+    // mock
+    // cy.intercept("POST", "api", (req) => {
+    //   req.reply((res) => {
+    //     res.send({
+    //       msg: "Your content is not pass."
+    //     })
+    //   })
+    // })
   })
 })

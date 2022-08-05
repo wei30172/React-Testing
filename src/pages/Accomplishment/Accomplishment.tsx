@@ -12,16 +12,32 @@ function Accomplishment() {
   const [showError, setShowError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!title || !accomplishment || !valid) {
+      setErrorMsg("Complete the items above to continue");
       return setShowError(true);
     }
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      // await axios.post("api", {
+      //   title,
+      //   accomplishment,
+      // });
+      setErrorMsg("");
       setShowSuccess(true);
-    }, 3000);
+      setLoading(false);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        // setErrorMsg(error.response.data.msg);
+        setErrorMsg("Your content is not pass");
+      }
+      setShowError(true);
+      setLoading(false);
+      return;
+    }
+    setShowSuccess(true);
   };
 
   return (
@@ -57,7 +73,7 @@ function Accomplishment() {
             </div>
             {showError && (
               <div className="accomplishment_card_error">
-                <p>Complete the items above to continue</p>
+                <p>{errorMsg}</p>
               </div>
             )}
             <ButtonWrapper
