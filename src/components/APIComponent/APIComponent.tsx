@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const APIComponent = () => {
   const [data, setData] = useState<{
@@ -7,17 +8,17 @@ const APIComponent = () => {
 
   useEffect(() => {
     let isMounted = true;
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => {
-        if (isMounted) {
-          setData(data);
-        }
-      });
+    const fetchData = async () => {
+      const { data } = await axios.get("/api");
+      if (isMounted) {
+        setData(data);
+      }
+    };
+    fetchData();
     return () => {
       isMounted = false;
     };
-  });
+  }, []);
   return (
     <section>
       {data && <div role="contentinfo">{`Name is ${data.name}.`}</div>}

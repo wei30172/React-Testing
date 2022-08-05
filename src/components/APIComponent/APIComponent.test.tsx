@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { rest } from "msw";
+import { rest } from "msw"; // mock service worker
 import { setupServer } from "msw/node";
 import APIComponent from "./APIComponent";
 
